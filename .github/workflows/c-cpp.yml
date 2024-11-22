@@ -1,0 +1,53 @@
+name: Workflow name
+
+on: push
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    name: Compile C++
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Compile C++
+      run: g++ -O3 ./src/main.cpp -o ./src/main.exe
+
+    - name: Upload executable
+      uses: actions/upload-artifact@v4
+      with:
+        name: executable
+        path: ./src/main.exe
+
+  run:
+    name: Run C++
+    needs: compile
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        a: [100.10.1,100.10.2,100.10.3]
+        b: [1500, 2000]
+        c: [10,20,30]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Download executable
+      uses: actions/download-artifact@v4
+      with:
+        name: executable
+        path: ./src
+
+    - name: Run executable
+      run: |
+        chmod +x ./src/main.exe
+        ./src/main.exe ${{ matrix.a }} ${{ matrix.b }} ${{ matrix.c }}
+    - name: Upload result
+      uses: actions/upload-artifact@v4
+      with:
+        name: result-${{ matrix.a }} ${{ matrix.b }} ${{ matrix.c }}
+        path: ./result.txt
