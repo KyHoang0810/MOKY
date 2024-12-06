@@ -44,6 +44,13 @@ int main(int argc,char *argv[]){
         num_trucks=4;
         num_drones=4;
     }
+    else if(stoi(token)==200){
+        num_cus=200;
+        num_trucks=10;
+        num_drones=4;
+    }
+    inputTimeLimit(instance);
+    //cout<<timeLimit<<endl;
 
     inputfile="./data/random_data/"+instance+txt;
     maxGenerations=stoi(argv[2]);
@@ -54,14 +61,15 @@ int main(int argc,char *argv[]){
     drone_max_tracks=(int)(canuseddrone/num_drones)+1;
     total_node=num_cus+num_trucks+drone_max_tracks*num_drones-1;
     //cout<<drone_max_tracks<<" "<<total_node<<endl;
-    initMatrix(); 
+    initMatrix();
     vector<Individual> population;
     population.clear();
-    //population=selectPopulation(populationSize);
+    
+    //population(populationSize);
 
     //testcount=to_string(testcountint);
+    
     for(int testcountint=1;testcountint<=10;testcountint++){
-        testcount=to_string(testcountint);
         srand(time(nullptr));
         population=selectPopulation(populationSize);
     //for(int i=6;i<12;i++){
@@ -89,6 +97,8 @@ int main(int argc,char *argv[]){
         populationcopy=population;
         vector<Individual> pareto;
         pareto.clear();
+        //vector<int> init=generateSol3();
+        //pareto=tabu_search2(init,max_tabu_iter);
         pareto= NSGA2(populationcopy);;
         /*
         int paretosize=pareto.size();
@@ -105,22 +115,9 @@ int main(int argc,char *argv[]){
             paretoRecord.normFit2=(pareto[j].fitness2-minfit2)/(maxfit2-minfit2);
             paretoRecords.push_back(paretoRecord);
         }*/  
-        /*
-        for(int j=0;j<3;j++){
-            for(int k=0;k<paretosize;k++){
-                paretoRecords[k].criteria=paretoRecords[k].normFit1*(j+1)*0.25+paretoRecords[k].normFit2*(3-j)*0.25;
-            }
-            sort(paretoRecords.begin(),paretoRecords.end(),compareCriteria);
-            for(int k=0;k<paretosize;k++){
-                paretoRecords[k].ranking+=k;
-            }
-            outputParetoResult(paretoRecords,j+1);
-        }
-        sort(paretoRecords.begin(),paretoRecords.end(),compareRanking);
-        outputParetoResult(paretoRecords,0);
-        */
+        
 
-    //}
+    //}*/
     }
     
     return 0;

@@ -15,7 +15,7 @@ vector<vector<int>> fast_non_dominated_sort(vector<Individual> &population){
     vector<vector<int>> front(popsize);
     vector<int> dominationcount(popsize);
     vector<vector<int>> dominatescount(popsize);
-    dominatescount.clear();
+    //dominatescount.clear();
     vector<int> check;
     check.assign(popsize,-1);
     for(int i=0;i<popsize;i++){
