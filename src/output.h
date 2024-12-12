@@ -32,11 +32,12 @@ void outputLog(int gen,vector<Individual> pareto){
     outputFile<<endl;
     outputFile.close();
 }
-void output( vector<Individual> pareto,double time,int end_iter,int tbtime){
+void output( vector<Individual> pareto,double time,int end_iter,int tbtime,int last_update){
     std::ofstream outputFile;
     outputFile.open(outputfilename, std::ios::app); // Open the file for writing
     outputFile<<"Time:"<<time<<endl;
     outputFile<<"Last Iter:"<<end_iter<<endl;
+    outputFile<<"Last Update:"<<last_update<<endl;
     outputFile<<"Tabu:"<<tbtime<<endl;
     outputFile<<pareto.size()<<endl;
     for(int i=0;i<pareto.size();i++){

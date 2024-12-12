@@ -643,7 +643,7 @@ vector<Individual> tabu_search2( const vector<int> &initial_solution,int max_ite
         if(iter==max_iterations-1)end_iter=max_iterations;
 	}
     time(&endtb);
-    output(Tabupareto,double(endtb-starttb),end_iter,end_iter);
+    output(Tabupareto,double(endtb-starttb),end_iter,end_iter,end_iter);
    // cout<<Tabupareto.size()<<endl;
 	return Tabupareto;
 }

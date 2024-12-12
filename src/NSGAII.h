@@ -151,7 +151,7 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
         
         int popusize=200;
         //if(false){
-            if(nochangeStreak%30==0&&nochangeStreak>0){
+            if(nochangeStreak%50==0&&nochangeStreak>0){
             //cout<<i<<"!"<<endl;
                 //std::ofstream outputFile;
                 //outputFile.open(outputtblog, std::ios::app);
@@ -197,7 +197,7 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
         }
         if(improveInpareto>0)nochangeStreak=0;    
         else nochangeStreak+=1;
-        //if(nochangeStreak>60){end_iter=i+1;break;}
+        if(nochangeStreak>100){end_iter=i+1;break;}
         sort(pareto.begin(),pareto.end(),comparefit1);
         if(paretonum.size()!=pareto.size()){
             vector<Individual> tester;
@@ -219,9 +219,9 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
         //if(double(end-start)>timeLimit){end_iter=i+1; break;}
         if(i==maxGenerations-1) end_iter=maxGenerations;
     }
-    
+    time(&end);
     sort(pareto.begin(),pareto.end(),comparefit1);
-    output(pareto,double(end-start),end_iter,tbtime);
+    output(pareto,double(end-start),end_iter,tbtime,end_iter-nochangeStreak);
     //outputpareto(pareto);
     //cout<<havetabu<<" "<<haveadaptive<<endl;
     return pareto;
