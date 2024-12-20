@@ -52,7 +52,6 @@ int main(int argc,char *argv[]){
     }
     inputTimeLimit(instance);
     //cout<<timeLimit<<endl;
-
     inputfile="./data/random_data/"+instance+txt;
     maxGenerations=1500;
     popusize =stoi(argv[2]);
@@ -75,7 +74,7 @@ int main(int argc,char *argv[]){
     for(int testcountint=1;testcountint<=10;testcountint++){
         srand(time(nullptr));
         population=selectPopulation(popusize);
-        cout<<1<<endl;
+        //cout<<1<<endl;
     //for(int i=6;i<12;i++){
         maxobj1=1000000000;
         maxobj2=1000000000;
