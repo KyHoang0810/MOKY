@@ -149,7 +149,7 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
         
         
         
-        int popusize=200;
+        //int popusize=400;
         //if(false){
             if(nochangeStreak%50==0&&nochangeStreak>0){
             //cout<<i<<"!"<<endl;
@@ -218,6 +218,7 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
         time(&end);
         //if(double(end-start)>timeLimit){end_iter=i+1; break;}
         if(i==maxGenerations-1) end_iter=maxGenerations;
+        //cout<<population.size()<<endl;
     }
     time(&end);
     sort(pareto.begin(),pareto.end(),comparefit1);

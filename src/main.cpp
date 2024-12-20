@@ -25,6 +25,7 @@ extern int maxGenerations;
 extern int num_cus;
 extern int num_trucks;
 extern int num_drones;
+extern int popusize;
 int main(int argc,char *argv[]){
     srand(time(nullptr));
     string instance=string(argv[1]);
@@ -53,11 +54,13 @@ int main(int argc,char *argv[]){
     //cout<<timeLimit<<endl;
 
     inputfile="./data/random_data/"+instance+txt;
-    maxGenerations=stoi(argv[2]);
+    maxGenerations=1500;
+    popusize =stoi(argv[2]);
     max_tabu_iter=stoi(argv[3]);
     time_t start,end;
     ios_base::sync_with_stdio(false);
     input();
+    //cout<<1<<endl;
     drone_max_tracks=(int)(canuseddrone/num_drones)+1;
     total_node=num_cus+num_trucks+drone_max_tracks*num_drones-1;
     //cout<<drone_max_tracks<<" "<<total_node<<endl;
@@ -71,7 +74,8 @@ int main(int argc,char *argv[]){
     
     for(int testcountint=1;testcountint<=10;testcountint++){
         srand(time(nullptr));
-        population=selectPopulation(populationSize);
+        population=selectPopulation(popusize);
+        cout<<1<<endl;
     //for(int i=6;i<12;i++){
         maxobj1=1000000000;
         maxobj2=1000000000;
