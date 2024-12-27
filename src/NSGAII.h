@@ -85,7 +85,7 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
         while (offpopu< population.size()) {
             // Crossover
             crossoverAlgo=crossoverSelection();
-            if(crossoverAlgo<0||crossoverAlgo>2)cout<<"error"<<endl;
+            if(crossoverAlgo<0||crossoverAlgo>3)cout<<"error"<<endl;
             nReward=0;
             nPenalty=0;
             Individual offspring;

@@ -53,6 +53,6 @@ double minobj2=0;
 double obj1norm;
 double obj2norm;
 double timeLimit;
-vector<double> crossoverProportion={1.0/3.0,1.0/3.0,1.0/3.0};
+vector<double> crossoverProportion={1.0/3.0,1.0/3.0,1.0/3.0,1.0/3.0};
 
 #endif
