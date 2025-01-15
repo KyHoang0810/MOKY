@@ -404,7 +404,7 @@ Individual tournamentSelection(vector<Individual>& population){
     set<int> random_numbers;
     // Generate 4 unique random numbers
     while (random_numbers.size() < 4) {
-        int number = rand()%200;
+        int number = rand()%popusize;
         random_numbers.insert(number); // set automatically handles uniqueness
     } 
     double best=0;

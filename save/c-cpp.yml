@@ -20,7 +20,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: executable
-        path: ./moead/main.exe
+        path: ./src/main.exe
 
   run:
     name: Run C++
@@ -40,12 +40,12 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: executable
-        path: ./moead
+        path: ./src
 
     - name: Run executable
       run: |
-        chmod +x ./moead/main.exe
-        ./moead/main.exe ${{ matrix.a }} ${{ matrix.b }} ${{ matrix.c }}
+        chmod +x ./src/main.exe
+        ./src/main.exe ${{ matrix.a }} ${{ matrix.b }} ${{ matrix.c }}
     - name: Upload result
       uses: actions/upload-artifact@v4
       with:
