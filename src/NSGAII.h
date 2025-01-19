@@ -27,7 +27,7 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
     int nRe[100][3];
     int nPe[100][3];
     
-    int tbtime=0;
+    double tbtime=0;
     for (int i = 0; i < maxGenerations; i++) {
         //if(i==0)cout<<crossoverProportion[0]<<" "<<crossoverProportion[1]<<" "<< crossoverProportion[2]<<endl;
         if(i%crossoverMod==0){
@@ -195,7 +195,12 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
                 updatepareto(population[paretonum[j]],pareto);
             }   
         }
-        if(improveInpareto>0)nochangeStreak=0;    
+        if(improveInpareto>0){
+            time_t las;
+            time(&las);
+            nochangeStreak=0;
+            tbtime=las-start;
+        }  
         else nochangeStreak+=1;
         //if(nochangeStreak>60){end_iter=i+1;break;}
         sort(pareto.begin(),pareto.end(),comparefit1);

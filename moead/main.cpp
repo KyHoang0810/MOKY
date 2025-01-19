@@ -25,12 +25,12 @@ int main(int argc,char *argv[]) {
     std::string instance=std::string(argv[1]);
     Problem problem = Problem::from_file("./data/random_data/"+instance+".txt", truck_config, drone_config);
     MOEADOptions options;
-    options.population_size = 100;
+    options.population_size = 200;
     options.neighbor_count = 10;
     options.max_population_count = std::stoi(argv[2]);
 
 
-    options.crossover_rate = 0.95;
+    options.crossover_rate = 0.9;
     options.mutation_rate = 0.1;
 
     options.initialization = create_random_population;
