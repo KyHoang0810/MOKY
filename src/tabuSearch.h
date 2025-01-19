@@ -466,6 +466,7 @@ vector<Individual> tabu_search( const vector<int> &initial_solution,int max_iter
 vector<Individual> tabu_search2( const vector<int> &initial_solution,int max_iterations)
 { // Added const qualifier
     time_t starttb,endtb;
+    double tbtime=0;
     time(&starttb);
     int end_iter=0;
 	vector<int> current_solution = initial_solution;
@@ -591,7 +592,12 @@ vector<Individual> tabu_search2( const vector<int> &initial_solution,int max_ite
                     updatepareto(neighbors[front[0][j]],Tabupareto);
                 }   
             }
-            if(update)noimprovecount=0;
+            if(update){
+                noimprovecount=0;
+                time_t las;
+                time(&las);
+                tbtime=double(las-starttb);
+            }
             else noimprovecount++;   
             while(!check&&cnt<20){
                 check=true;
@@ -644,7 +650,7 @@ vector<Individual> tabu_search2( const vector<int> &initial_solution,int max_ite
         if(iter==max_iterations-1)end_iter=max_iterations;
 	}
     time(&endtb);
-    output(Tabupareto,double(endtb-starttb),end_iter,end_iter,end_iter);
+    output(Tabupareto,double(endtb-starttb),end_iter,tbtime,end_iter);
    // cout<<Tabupareto.size()<<endl;
 	return Tabupareto;
 }
