@@ -157,7 +157,7 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
                 //outputFile.open(outputtblog, std::ios::app);
                 //outputFile<<"Generation "<<i<<" :";
                 //outputFile<<pareto.size()<<endl;
-                tbtime++;
+                //tbtime++;
                 vector<Individual>Taburesult;
                 for(int f=0;f<pareto.size();f++){
                     //if(pareto[f].tabusearch>1)continue;
