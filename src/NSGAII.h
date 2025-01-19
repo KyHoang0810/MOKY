@@ -216,7 +216,7 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
         }
         //outputLog(i,population);
         time(&end);
-        //if(double(end-start)>timeLimit){end_iter=i+1; break;}
+        if(double(end-start)>timeLimit){end_iter=i+1; break;}
         if(i==maxGenerations-1) end_iter=maxGenerations;
         //cout<<population.size()<<endl;
     }
