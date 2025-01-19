@@ -55,10 +55,10 @@ Individual create_offspring(const std::vector<std::size_t>& neighbors, MOEADPopu
     return result;
 }
 
-void evolve_population(MOEADPopulation& population, const Problem& problem, const MOEADOptions& options) {
+bool evolve_population(MOEADPopulation& population, const Problem& problem, const MOEADOptions& options) {
     std::uniform_real_distribution<> distribution(0, 1);
     double chance;
-
+    bool update=false;
     // Duyệt qua toàn bộ cá thể trong quần thể
     for (std::size_t i = 0; i < population.size(); ++i) {
         // Chuẩn bị tập hàng xóm
@@ -121,10 +121,12 @@ void evolve_population(MOEADPopulation& population, const Problem& problem, cons
             }
         }
         if (do_insert) {
+            update=true;
             population.external_population.push_back(offspring);
             population.external_population_fitness.push_back(offspring_fitness);
         }
     }
+    return update;
 }
 bool comparefit1(Fitness  &indi1,Fitness &indi2){
     return indi1[0]<indi2[0];
@@ -151,19 +153,24 @@ Population moead(const Problem& problem, const MOEADOptions& options,double time
     //log(population);
     time_t start,end;
     int enditer=0;
+    double lastuptime=0;
     time(&start);
     // 2. Update
     for (int i = 1; i <= options.max_population_count; ++i) {
-        evolve_population(population, problem, options);
+        bool haveupdate=evolve_population(population, problem, options);
         //log(population);
-
+        if(haveupdate){
+            time_t las;
+            time(&las);
+            lastuptime=double(las-start);
+        }
         for (const Fitness& fitness : population.external_population_fitness) {
             //print(fitness);
         }
-        std::cout<<"Generation " << std::to_string(i)<<std::endl;
+        //std::cout<<"Generation " << std::to_string(i)<<std::endl;
         time(&end);
         if(double(end-start)>timelimit){enditer=i+1; break;}
     }
-    output(population,double(end-start),enditer,0,0);
+    output(population,double(end-start),enditer,lastuptime,0);
     return population.external_population;
 }
