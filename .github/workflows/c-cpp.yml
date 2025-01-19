@@ -14,13 +14,13 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Compile C++
-      run: g++ -O3 ./moead/main.cpp ./moead/problem.cpp ./moead/genetic_operator.cpp ./moead/genetic.cpp ./moead/local_search.cpp ./moead/moead.cpp ./moead/random.cpp -o ./moead/main.exe
+      run: g++ -O3 ./src/main.cpp -o ./src/main.exe
 
     - name: Upload executable
       uses: actions/upload-artifact@v4
       with:
         name: executable
-        path: ./moead/main.exe
+        path: ./src/main.exe
 
   run:
     name: Run C++
@@ -30,7 +30,7 @@ jobs:
       fail-fast: false
       matrix:
         a: [200.40.1,200.40.2,200.40.3,200.40.4]
-        b: [5000000]
+        b: [100000]
         c: [0] 
     steps:
     - name: Checkout repository
@@ -40,12 +40,12 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: executable
-        path: ./moead
+        path: ./src
 
     - name: Run executable
       run: |
-        chmod +x ./moead/main.exe
-        ./moead/main.exe ${{ matrix.a }} ${{ matrix.b }} ${{ matrix.c }}
+        chmod +x ./src/main.exe
+        ./src/main.exe ${{ matrix.a }} ${{ matrix.b }} ${{ matrix.c }}
     - name: Upload result
       uses: actions/upload-artifact@v4
       with:
