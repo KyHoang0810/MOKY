@@ -24,9 +24,9 @@ int maxGenerations=2000;
 #define takeoffTime cruiseAlt/takeoffSpeed
 #define landingTime cruiseAlt/landingSpeed
 #define capacityC 2.27
-#define batteryPower 457503
-#define betaB 210.8
-#define gama 181.2
+#define batteryPower 904033
+#define betaB 24.2
+#define gama 1392
 #define mvalue 1e20
 
 string txt=".txt";
