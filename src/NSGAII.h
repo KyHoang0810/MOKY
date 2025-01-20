@@ -202,7 +202,7 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
             tbtime=las-start;
         }  
         else nochangeStreak+=1;
-        if(nochangeStreak>60){end_iter=i+1;break;}
+        //if(nochangeStreak>60){end_iter=i+1;break;}
         sort(pareto.begin(),pareto.end(),comparefit1);
         if(paretonum.size()!=pareto.size()){
             vector<Individual> tester;
@@ -221,7 +221,7 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
         }
         //outputLog(i,population);
         time(&end);
-        //if(double(end-start)>timeLimit){end_iter=i+1; break;}
+        if(double(end-start)>timeLimit){end_iter=i+1; break;}
         if(i==maxGenerations-1) end_iter=maxGenerations;
         //cout<<population.size()<<endl;
     }

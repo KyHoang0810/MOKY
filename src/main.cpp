@@ -71,7 +71,7 @@ int main(int argc,char *argv[]){
     //population(populationSize);
 
     //testcount=to_string(testcountint);
-    for(int testcountint=1;testcountint<=5;testcountint++){
+    for(int testcountint=1;testcountint<=10;testcountint++){
         srand(time(nullptr));
         population=selectPopulation(popusize);
         
