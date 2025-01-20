@@ -31,7 +31,7 @@ int main(int argc,char *argv[]) {
 
 
     options.crossover_rate = 0.9;
-    options.mutation_rate = 0.1;
+    options.mutation_rate = 0.05;
 
     options.initialization = create_random_population;
     options.generate_weights = uniform_weights;
@@ -42,7 +42,7 @@ int main(int argc,char *argv[]) {
     options.local_search = first_improvement_permutation_swap_hill_climbing;
     double timeLimit=inputTimeLimit(instance);
     
-    for(int i=0;i<5;i++){
+    for(int i=0;i<10;i++){
         Population pareto= moead(problem, options,timeLimit);
     }
     return 0;
