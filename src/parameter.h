@@ -24,7 +24,7 @@ int maxGenerations=2000;
 #define takeoffTime cruiseAlt/takeoffSpeed
 #define landingTime cruiseAlt/landingSpeed
 #define capacityC 2.27
-#define batteryPower 562990
+#define batteryPower 291094
 #define betaB 210.8
 #define gama 181.2
 #define mvalue 1e20
@@ -53,6 +53,6 @@ double minobj2=0;
 double obj1norm;
 double obj2norm;
 double timeLimit;
-vector<double> crossoverProportion={1.0/3.0,1.0/3.0,1.0/3.0,1.0/3.0};
+vector<double> crossoverProportion={1.0/3.0,1.0/3.0,1.0/3.0};
 
 #endif
