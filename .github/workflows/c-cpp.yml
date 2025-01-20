@@ -30,8 +30,8 @@ jobs:
       fail-fast: false
       matrix:
         a: [50.40.1,50.40.2,50.40.3,50.40.4]
-        b: [250,300,350,400]
-        c: [10] 
+        b: [0,1,2,3]
+        c: [0] 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
