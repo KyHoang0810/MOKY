@@ -169,7 +169,7 @@ Population moead(const Problem& problem, const MOEADOptions& options,double time
         }
         //std::cout<<"Generation " << std::to_string(i)<<std::endl;
         time(&end);
-        if(double(end-start)>timelimit){enditer=i+1; break;}
+        if(double(end-start)>=timelimit){enditer=i+1; break;}
     }
     output(population,double(end-start),enditer,lastuptime,0);
     return population.external_population;
