@@ -163,6 +163,8 @@ vector<Individual> NSGA2(vector<Individual> &defaultpop){
                     //if(pareto[f].tabusearch>1)continue;
                     //outputFile<<"Solution "<<f+1<<":"<<endl;
                     //vector<Individual>Taburesult;
+                    time(&end);
+                    if(double(end-start)>=timeLimit) break;
                     Taburesult.clear();
                     if(max_tabu_iter>0) Taburesult=tabu_search(pareto[f].route,max_tabu_iter);
                     for(int k=0;k<Taburesult.size();k++){
