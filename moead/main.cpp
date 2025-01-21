@@ -9,7 +9,7 @@ double inputTimeLimit(std::string instance){
     std::ifstream inputfile("./src/time.txt");
     std::string line;
     double timeLimit=0;
-    for(int i=0;i<56;i++){
+    for(int i=0;i<60;i++){
         getline(inputfile,line);
         if(line.find(instance)!=std::string::npos){
             int po=line.find(";");
