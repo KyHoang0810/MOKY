@@ -71,7 +71,7 @@ int main(int argc,char *argv[]){
     //population(populationSize);
 
     //testcount=to_string(testcountint);
-    for(int testcountint=1;testcountint<=10;testcountint++){
+    for(int testcountint=1;testcountint<=5;testcountint++){
         srand(time(nullptr));
         population=selectPopulation(popusize);
         
@@ -101,9 +101,9 @@ int main(int argc,char *argv[]){
         populationcopy=population;
         vector<Individual> pareto;
         pareto.clear();
-        vector<int> init=generateSol3();
-        pareto=tabu_search2(init,max_tabu_iter);
-        //pareto= NSGA2(populationcopy);;
+        //vector<int> init=generateSol3();
+        //pareto=tabu_search2(init,max_tabu_iter);
+        pareto= NSGA2(populationcopy);;
         /*
         int paretosize=pareto.size();
         double minfit1=pareto[0].fitness1;
