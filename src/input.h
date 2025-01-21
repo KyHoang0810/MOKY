@@ -68,7 +68,7 @@ void input(){
 void inputTimeLimit(string instance){
     ifstream inputfile("./src/time.txt");
     string line;
-    for(int i=0;i<56;i++){
+    for(int i=0;i<60;i++){
         getline(inputfile,line);
         if(line.find(instance)!=string::npos){
             int po=line.find(";");
