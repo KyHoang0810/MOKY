@@ -6,48 +6,19 @@ permissions:
   contents: read
 
 jobs:
-  compile:
-    name: Compile C++
+  check-config:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Compile C++
-      run: g++ -O3 ./src/main.cpp -o ./src/main.exe
-
-    - name: Upload executable
-      uses: actions/upload-artifact@v4
-      with:
-        name: executable
-        path: ./src/main.exe
-
-  run:
-    name: Run C++
-    needs: compile
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        a: [20.5.1,20.5.2,20.5.3,20.5.4,20.10.1,20.10.2,20.10.3,20.10.4,20.20.1,20.20.2,20.20.3,20.20.4,50.10.1,50.10.2,50.10.3,50.10.4,50.20.1,50.20.2,50.20.3,50.20.4,50.30.1,50.30.2,50.30.3,50.30.4,50.40.1,50.40.2,50.40.3,50.40.4,100.10.1,100.10.2,100.10.3,100.10.4,100.20.1,100.20.2,100.20.3,100.20.4,100.30.1,100.30.2,100.30.3,100.30.4,100.40.1,100.40.2,100.40.3,100.40.4,200.10.1,200.10.2,200.10.3,200.10.4,200.20.1,200.20.2,200.20.3,200.20.4,200.30.1,200.30.2,200.30.3,200.30.4,200.40.1,200.40.2,200.40.3,200.40.4]
-        b: [400]
-        c: [20] 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Download executable
-      uses: actions/download-artifact@v4
-      with:
-        name: executable
-        path: ./src
-
-    - name: Run executable
-      run: |
-        chmod +x ./src/main.exe
-        ./src/main.exe ${{ matrix.a }} ${{ matrix.b }} ${{ matrix.c }}
-    - name: Upload result
-      uses: actions/upload-artifact@v4
-      with:
-        name: result-${{ matrix.a }} ${{ matrix.b }} ${{ matrix.c }}
-        path: ./result.txt
+      - name: Display system info
+        run: |
+          echo "CPU Info:"
+          lscpu
+          echo "Memory Info:"
+          free -h
+          echo "Disk Info:"
+          df -h
+          echo "Installed Tools:"
+          docker --version
+          node --version
+          python3 --version
+          gcc --version
