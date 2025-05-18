@@ -53,9 +53,9 @@ int main(int argc,char *argv[]){
     inputTimeLimit(instance);
     //cout<<timeLimit<<endl;
     inputfile="./data/random_data/"+instance+txt;
-    maxGenerations=stoi(argv[2]);  
-    //maxGenerations=100000;
-    //popusize=stoi(argv[2]);
+    //maxGenerations=stoi(argv[2]);  
+    maxGenerations=100000;
+    popusize=stoi(argv[2]);
     max_tabu_iter=stoi(argv[3]);
     time_t start,end;
     ios_base::sync_with_stdio(false);
