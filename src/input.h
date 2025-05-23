@@ -52,7 +52,7 @@ void input(){
         Customer b;
         b.x=a[0];
         b.y=a[1];
-        b.demand=a[2]*10;
+        b.demand=a[2];
         b.OnlyByTruck=a[3];
         if(a[3]==0)canuseddrone++;
         b.TruckServiceTime=a[4];
