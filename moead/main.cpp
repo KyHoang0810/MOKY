@@ -41,7 +41,7 @@ int main(int argc,char *argv[]) {
     options.postprocessing = [] (Individual&, const Problem&) {};
     options.local_search = first_improvement_permutation_swap_hill_climbing;
     double timeLimit=inputTimeLimit(instance);
-    
+    std::cout<<timeLimit<<std::endl;
     for(int i=0;i<10;i++){
         Population pareto= moead(problem, options,timeLimit);
     }

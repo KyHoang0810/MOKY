@@ -150,6 +150,7 @@ void output( MOEADPopulation pareto,double time,int end_iter,int tbtime,int last
 Population moead(const Problem& problem, const MOEADOptions& options,double timelimit) {
     // 1. Initialization
     MOEADPopulation population(problem, options);
+    std::cout<<timelimit<<std::endl;
     //log(population);
     time_t start,end;
     int enditer=0;
@@ -172,5 +173,6 @@ Population moead(const Problem& problem, const MOEADOptions& options,double time
         if(double(end-start)>=timelimit){enditer=i+1; break;}
     }
     output(population,double(end-start),enditer,lastuptime,0);
+    std::cout<<double(end-start)<<std::endl;
     return population.external_population;
 }
