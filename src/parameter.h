@@ -9,7 +9,7 @@ int crossoverMod=50;
 int num_cus=20;
 int num_trucks=2;
 int num_drones=2;
-int popusize=250;
+int popusize=200;
 #define droneservetime 30
 #define truckservetime 60
 #define populationSize   200
